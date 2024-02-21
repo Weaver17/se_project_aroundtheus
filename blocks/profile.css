@@ -1,0 +1,11 @@
+.profile {
+  color: #fff;
+  padding: 0;
+  max-width: 880px;
+  margin: 40px auto 51px;
+  display: flex;
+}
+
+.profile__info {
+  display: flex;
+}

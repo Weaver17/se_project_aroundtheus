@@ -1,11 +1,45 @@
 .profile {
   color: #fff;
   padding: 0;
-  max-width: 880px;
-  margin: 40px auto 51px;
+  width: 100%;
+  margin: 40px 0 51px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .profile__info {
+  margin: 0;
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.profile__info-name {
+  margin: 0;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  white-space: nowrap;
+}
+
+.profile__info-edit-button {
+  margin-left: 18px;
+  background-color: #000;
+  border: 1px solid #fff;
+  height: 24px;
+  width: 24px;
+  align-items: center;
+}
+
+.profile__info-name-subtext {
+  width: 100%;
+  margin-top: 7px;
+}
+
+.profile__add-button {
+  background-color: #000;
+  border: 1px solid #fff;
+  height: 50px;
+  width: 150px;
 }

@@ -1,0 +1,9 @@
+.footer {
+  width: 100%;
+  color: #545454;
+  margin-bottom: 60px;
+}
+
+.footer__copyright {
+  font-size: 18px;
+}

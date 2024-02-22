@@ -1,0 +1,41 @@
+.cards {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 1rem;
+  margin-bottom: 67px;
+}
+
+.card {
+  width: 282px;
+  height: 361px;
+  background-color: #fff;
+  border-radius: 20px 20px 10px 10px;
+}
+
+.card__image {
+  margin: 0;
+  border-radius: 10px 10px 0 0;
+  height: 80%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card__caption {
+  display: flex;
+  height: 20%;
+  margin: 0;
+  padding: 0 1em;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__location {
+  font-weight: 900;
+  font-size: 1.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

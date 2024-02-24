@@ -1,4 +1,4 @@
-html {
+.page {
   background-color: #000;
   font-family: "Inter", Arial, sans-serif;
   font-weight: normal;
@@ -6,8 +6,27 @@ html {
   line-height: 1.2;
 }
 
-.page {
-  padding: 0;
-  width: 880px;
+.page__content {
+  min-width: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page__section {
+  width: 100%;
+  max-width: 880px;
+  box-sizing: border-box;
+  position: relative;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 905px) {
+  .page__section {
+    margin: 0 10px;
+    max-width: calc(100% - 20px);
+  }
 }

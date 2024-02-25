@@ -43,8 +43,3 @@
   opacity: 0.5;
   transition: 0.3s linear;
 }
-
-@media screen and (max-width: 905px) {
-  .card {
-  }
-}

@@ -10,19 +10,20 @@
   margin-bottom: 41px;
 }
 
-@media screen and (max-width: 905px) {
+@media screen and (max-width: 885px) {
   .header {
-    width: 85%;
+    margin: 40px 20px 0;
+    max-width: calc(100% - 40px);
   }
 }
 
-@media screen and (max-width: 615px) {
+@media screen and (max-width: 594px) {
   .header {
-    width: 100%;
-    margin: 0;
+    margin: 40px 0 0;
+    max-width: 100%;
   }
 
   .header__logo {
-    margin: 30px 30px 40px;
+    margin-left: 20px;
   }
 }

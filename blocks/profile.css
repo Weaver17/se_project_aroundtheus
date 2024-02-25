@@ -2,7 +2,7 @@
   color: #fff;
   padding: 0;
   width: 880px;
-  margin: 40px auto 51px;
+  margin: 40px auto 0;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   align-items: center;
@@ -67,6 +67,13 @@
   transition: 0.3s linear;
 }
 
+@media screen and (max-width: 885px) {
+  .profile {
+    margin: 40px 20px 0;
+    max-width: calc(100% - 40px);
+  }
+}
+
 @media screen and (max-width: 720px) {
   .profile {
     display: flex;
@@ -89,17 +96,13 @@
   }
 }
 
-@media screen and (max-width: 905px) {
+@media screen and (max-width: 525px) {
   .profile {
-    width: 95%;
+    margin: 40px 20px 0;
+    max-width: calc(100% - 40px);
   }
-}
 
-@media screen and (max-width: 615px) {
-  .profile__info-name-subtext {
-    margin-top: 0;
+  .profile__add-button {
+    width: 100%;
   }
-}
-
-@media screen and (max-width: 525px) and (min-width: 320px) {
 }

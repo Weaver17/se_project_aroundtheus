@@ -1,8 +1,20 @@
 .footer {
-  margin: 31px auto 60px;
+  margin: 0 auto 60px;
   color: #545454;
 }
 
 .footer__copyright {
   font-size: 18px;
+}
+
+@media screen and (max-width: 885px) {
+  .footer {
+    max-width: 584px;
+  }
+}
+
+@media screen and (max-width: 594px) {
+  .footer {
+    max-width: 282px;
+  }
 }

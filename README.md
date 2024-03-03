@@ -20,16 +20,21 @@ A small homepage for a user on an image sharing website. This site has the optio
 
 **Preview Images**
 
-Desktop-
+#### Desktop-
+
 ![Desktop](<Desktop View.png>)
 
-Tablet-
+#### Tablet-
+
 ![Tablet](<Tablet View.png>)
 
-Large Mobile-
+#### Large Mobile-
+
 ![Large Mobile](<Large Mobile.png>)
 
-Small Mobile-
+#### Small Mobile-
+
+![Small Mobile](<Small Mobile.png>)
 
 **Video Overview**
 

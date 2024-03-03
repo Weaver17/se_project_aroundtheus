@@ -20,9 +20,16 @@ A small homepage for a user on an image sharing website. This site has the optio
 
 **Preview Images**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
+Desktop-
+![Desktop](<Desktop View.png>)
 
-Good luck and have fun!
+Tablet-
+![Tablet](<Tablet View.png>)
+
+Large Mobile-
+![Large Mobile](<Large Mobile.png>)
+
+Small Mobile-
 
 **Video Overview**
 

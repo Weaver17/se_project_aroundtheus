@@ -1,6 +1,6 @@
 # Project 3: Around The U.S.
 
-### Recent Updates
+## Recent Updates
 
 ### Overview
 
@@ -22,19 +22,19 @@ A small homepage for a user on an image sharing website. This site has the optio
 
 #### Desktop-
 
-![Desktop](<Desktop View.png>)
+![Desktop](/images/demo/Desktop-View.png)
 
 #### Tablet-
 
-![Tablet](<Tablet View.png>)
+![Tablet](/images/demo/Tablet-View.png)
 
 #### Large Mobile-
 
-![Large Mobile](<Large Mobile.png>)
+![Large Mobile](/images/demo/Large-Mobile.png)
 
 #### Small Mobile-
 
-![Small Mobile](<Small Mobile.png>)
+![Small Mobile](/images/demo/Small-Mobile.png)
 
 **Video Overview**
 

@@ -26,7 +26,7 @@ A small homepage for a user on an image sharing website. This site has the optio
 
 #### Tablet-
 
-![Tablet](/images/demo/Tablet-View.png)
+![Tablet](/images/demo/Tablet--View.png)
 
 #### Large Mobile-
 

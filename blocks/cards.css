@@ -34,7 +34,7 @@
 
 .card__like-button {
   padding: 10px;
-  background: transparent url(/images/heart.svg) center no-repeat;
+  background: transparent url(../images/heart.svg) center no-repeat;
   border: none;
   width: 21px;
   height: 18px;

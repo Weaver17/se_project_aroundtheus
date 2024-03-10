@@ -12,9 +12,16 @@
   justify-content: center;
 }
 
+@media screen and (max-width: 755px) {
+  .gallery {
+    margin-top: 44px;
+    margin-bottom: 55px;
+  }
+}
+
 @media screen and (max-width: 525px) {
   .gallery {
-    margin: 51px 20px 67px;
+    margin: 36px 20px 48px;
     max-width: calc(100% - 40px);
   }
 }

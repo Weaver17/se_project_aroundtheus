@@ -51,7 +51,7 @@
   transition: 0.3s linear;
 }
 
-.profile__info-name-subtext {
+.profile__info-name-subtitle {
   width: 100%;
   max-width: 385px;
   margin-top: 7px;
@@ -83,7 +83,7 @@
   }
 }
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 755px) {
   .profile__info-name {
     font-size: 28px;
     line-height: 36px;

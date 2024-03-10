@@ -4,17 +4,25 @@
 }
 
 .footer__copyright {
+  margin: 0;
   font-size: 18px;
 }
 
 @media screen and (max-width: 885px) {
   .footer {
     max-width: 584px;
+    margin-bottom: 46px;
   }
 }
 
 @media screen and (max-width: 605px) {
   .footer {
     max-width: 282px;
+    margin-bottom: 36px;
+  }
+
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 17px;
   }
 }

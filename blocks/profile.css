@@ -17,7 +17,6 @@
 }
 
 .profile__info {
-  margin: 0;
   display: grid;
   align-items: center;
   grid-template-areas:
@@ -25,7 +24,7 @@
     "subtitle subtitle";
 }
 
-.profile__info-name {
+.info__name {
   margin: 0;
   max-width: 385px;
   font-weight: 500;
@@ -38,8 +37,7 @@
   grid-area: name;
 }
 
-.profile__info-edit-button {
-  padding: 0;
+.info__edit-button {
   background: transparent url(../images/pencil.png) center no-repeat;
   border: 1px solid #fff;
   height: 24px;
@@ -48,14 +46,13 @@
   grid-area: button;
 }
 
-.profile__info-edit-button:hover {
+.info__edit-button:hover {
   cursor: pointer;
   opacity: 0.6;
   transition: 0.3s linear;
 }
 
-.profile__info-subtitle {
-  width: 100%;
+.info__subtitle {
   max-width: 385px;
   margin-top: 7px;
   font-size: 18px;
@@ -89,20 +86,15 @@
 }
 
 @media screen and (max-width: 755px) {
-  .profile__info-name {
+  .info__name {
     font-size: 28px;
     line-height: 36px;
   }
 
-  .profile__info-edit-button {
+  .info__edit-button {
     font-size: 0;
     height: 18px;
     width: 18px;
-  }
-
-  .profile__info-edit-button-image {
-    height: 7.5px;
-    width: 7.5px;
   }
 
   .profile__add-button {
@@ -123,7 +115,6 @@
 @media screen and (max-width: 525px) {
   .profile {
     margin: 40px auto 0;
-    display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 282px;
@@ -138,13 +129,13 @@
     margin-bottom: 30px;
   }
 
-  .profile__info-name {
+  .info__name {
     font-size: 22px;
     line-height: 27px;
     text-align: center;
   }
 
-  .profile__info-subtitle {
+  .info__subtitle {
     font-size: 14px;
     line-height: 17px;
     text-align: center;

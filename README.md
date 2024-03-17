@@ -4,6 +4,8 @@ https://weaver17.github.io/se_project_aroundtheus/
 
 ## Recent Updates
 
+- Added JavaScript!
+
 ### Overview
 
 - About

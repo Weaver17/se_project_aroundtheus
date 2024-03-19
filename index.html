@@ -38,7 +38,7 @@
               type="button"
             ></button>
 
-            <p class="info__subtitle">Explorer</p>
+            <p class="info__description">Explorer</p>
           </div>
           <button
             class="profile__add-button"
@@ -141,6 +141,23 @@
         <p class="footer__copyright">&copy; 2024 Around The U.S.</p>
       </footer>
     </div>
+
+    <div class="modal">
+      <div class="modal__container">
+        <button class="modal__exit" type="button"></button>
+        <h3 class="modal__heading">Edit Profile</h3>
+        <form class="modal__form">
+          <input class="modal__name modal__input" type="text" name="name" />
+          <input
+            class="modal__description modal__input"
+            type="text"
+            name="description"
+          />
+          <button class="modal__save" type="button">Save</button>
+        </form>
+      </div>
+    </div>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>

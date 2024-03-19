@@ -21,7 +21,7 @@
   align-items: center;
   grid-template-areas:
     "name button"
-    "subtitle subtitle";
+    "description description";
 }
 
 .info__name {
@@ -52,7 +52,7 @@
   transition: 0.3s linear;
 }
 
-.info__subtitle {
+.info__description {
   margin: 7px 0 0;
   padding: 0;
   max-width: 385px;
@@ -61,7 +61,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  grid-area: subtitle;
+  grid-area: description;
 }
 
 .profile__add-button {
@@ -136,7 +136,7 @@
     text-align: center;
   }
 
-  .info__subtitle {
+  .info__description {
     font-size: 14px;
     line-height: 17px;
     text-align: center;

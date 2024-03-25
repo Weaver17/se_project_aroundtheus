@@ -83,6 +83,7 @@
 
 .modal__exit:hover {
   opacity: 0.8;
+  transition: 0.3s linear;
 }
 
 .modal__input:focus {
@@ -93,6 +94,7 @@
 
 .modal__save:hover {
   background-color: rgba(0, 0, 0, 0.8);
+  transition: 0.3s linear;
 }
 
 @media screen and (max-width: 605px) {

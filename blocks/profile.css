@@ -46,7 +46,7 @@
   grid-area: button;
 }
 
-.profie__edit-button:hover {
+.profile__edit-button:hover {
   cursor: pointer;
   opacity: 0.6;
   transition: 0.3s linear;

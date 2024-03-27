@@ -28,11 +28,47 @@ const initialCards = [
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const modalExitBtn = document.querySelector("#modal-exit-button");
+const profileName = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__description");
+const profileNameInput = document.querySelector(".modal__name");
+const profileDescriptionInput = document.querySelector(".modal__description");
+const profileEditForm = profileEditModal.querySelector(".modal__form");
+const cardListEl = document.querySelector(".gallery__cards");
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
 
-profileEditBtn.addEventListener("click", () =>
-  profileEditModal.classList.add("modal_opened")
-);
+function closePopup() {
+  profileEditModal.classList.remove("modal_opened");
+}
 
-modalExitBtn.addEventListener("click", () =>
-  profileEditModal.classList.remove("modal_opened")
-);
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
+  cardTitleEl.textContent = cardData.name;
+  return cardElement;
+}
+
+profileEditBtn.addEventListener("click", () => {
+  profileNameInput.value = profileName.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  profileEditModal.classList.add("modal_opened");
+});
+
+modalExitBtn.addEventListener("click", () => {
+  closePopup();
+});
+
+profileEditForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  profileName.textContent = profileNameInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopup();
+});
+
+initialCards.forEach((cardData) => {
+  const cardElement = getCardElement(cardData);
+  cardListEl.append(cardElement);
+});

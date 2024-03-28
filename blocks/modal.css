@@ -7,12 +7,12 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal_opened {
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .modal__container {
@@ -57,12 +57,12 @@
   line-height: 17px;
 }
 
-.modal__name {
+.modal__input:first-child {
   margin: 0 0 30px;
   padding: 0 0 13px;
 }
 
-.modal__description {
+.modal__input:nth-child(2) {
   margin: 0 0 48px;
   padding: 0 0 13px;
 }
@@ -82,7 +82,7 @@
 }
 
 .modal__exit:hover {
-  opacity: 0.8;
+  opacity: 0.6;
   transition: 0.3s linear;
 }
 

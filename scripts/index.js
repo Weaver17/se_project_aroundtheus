@@ -30,12 +30,25 @@ const profileEditModal = document.querySelector("#profile-edit-modal");
 const modalExitBtn = document.querySelector("#modal-exit-button");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
-const profileNameInput = document.querySelector(".modal__name");
-const profileDescriptionInput = document.querySelector(".modal__description");
+const profileNameInput = document.querySelector("#modal-name");
+const profileDescriptionInput = document.querySelector("#modal-description");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".gallery__cards");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
+
+function openPopup() {
+  profileNameInput.value = profileName.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
+  profileEditModal.classList.add("modal_opened");
+}
+
+function savePopup(e) {
+  e.preventDefault();
+  profileName.textContent = profileNameInput.value;
+  profileDescription.textContent = profileDescriptionInput.value;
+  closePopup();
+}
 
 function closePopup() {
   profileEditModal.classList.remove("modal_opened");
@@ -51,22 +64,11 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-profileEditBtn.addEventListener("click", () => {
-  profileNameInput.value = profileName.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add("modal_opened");
-});
+profileEditBtn.addEventListener("click", openPopup);
 
-modalExitBtn.addEventListener("click", () => {
-  closePopup();
-});
+modalExitBtn.addEventListener("click", closePopup);
 
-profileEditForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  profileName.textContent = profileNameInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closePopup();
-});
+profileEditForm.addEventListener("submit", savePopup);
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);

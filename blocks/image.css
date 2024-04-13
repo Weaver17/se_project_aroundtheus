@@ -1,0 +1,64 @@
+/* .modal_full_screen_image {
+  border-radius: 0px;
+} */
+
+.modal__container_image {
+  padding: 0;
+  border-radius: 0;
+  max-height: 75vh;
+  max-width: 75vw;
+  background-color: rgb(255, 255, 255, 0);
+  object-fit: contain;
+  object-position: center;
+}
+
+.modal__exit_image {
+  margin-left: 4px;
+  padding: 0;
+  position: absolute;
+  border: none;
+  background: transparent url(../images/Close-Icon.svg) no-repeat;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  top: -45px;
+  right: -45px;
+  cursor: pointer;
+}
+
+.modal__image {
+  padding: 0;
+  max-height: 75vh;
+  max-width: 75vw;
+}
+
+.modal__image-title {
+  margin: 10px 0;
+  padding: 0;
+  color: #fff;
+  font-size: 12px;
+  line-height: 14.5px;
+}
+
+@media screen and (max-width: 755px) {
+  .modal__exit_image {
+    width: 35px;
+    height: 35px;
+    top: -35px;
+    right: -35px;
+  }
+}
+
+@media screen and (max-width: 605px) {
+  .modal__image {
+    height: 65vh;
+    width: 65vw;
+  }
+
+  .modal__exit_image {
+    width: 30px;
+    height: 30px;
+    top: -30px;
+    right: -30px;
+  }
+}

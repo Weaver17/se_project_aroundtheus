@@ -132,6 +132,8 @@ initialCards.forEach((cardData) => renderCards(cardData, cardListEl));
 
 cardAddBtn.addEventListener("click", () => {
   openPopup(cardAddModal);
+  cardTitleInput.value = "";
+  cardLinkInput.value = "";
 });
 
 cardAddExitBtn.addEventListener("click", () => {

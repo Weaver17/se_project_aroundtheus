@@ -50,11 +50,6 @@
 }
 
 @media screen and (max-width: 605px) {
-  .modal__image {
-    height: 65vh;
-    width: 65vw;
-  }
-
   .modal__exit_image {
     width: 30px;
     height: 30px;

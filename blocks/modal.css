@@ -6,13 +6,12 @@
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.modal_opened {
-  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
 .modal__container {
@@ -95,6 +94,13 @@
 .modal__save:hover {
   background-color: rgba(0, 0, 0, 0.8);
   transition: 0.3s linear;
+}
+
+.modal_opened {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 @media screen and (max-width: 605px) {

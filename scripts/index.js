@@ -100,9 +100,6 @@ function getCardElement(cardData) {
     openPopup(previewImageModal);
   });
 
-  // 3-- add click listener to cardImage
-  //    openModal with previewImageModal
-
   imageModalExitBtn.addEventListener("click", () => {
     closePopup(previewImageModal);
   });

@@ -58,6 +58,7 @@
     </div>
 
     <div class="modal" id="profile-edit-modal">
+      <div class="modal__background"></div>
       <div class="modal__container">
         <button
           class="modal__exit"
@@ -72,20 +73,35 @@
             type="text"
             name="name"
             placeholder="Name"
+            required
+            minlength="2"
+            maxlength="40"
           />
+          <span class="modal__error" id="modal-name-error"></span>
           <input
             class="modal__input"
             id="modal-description"
             type="text"
             name="description"
             placeholder="Description"
+            required
+            minlength="2"
+            maxlength="200"
           />
-          <button class="modal__save" type="submit">Save</button>
+          <span class="modal__error" id="modal-description-error"></span>
+          <button
+            class="modal__save modal__save_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
 
     <div class="modal" id="add-card-modal">
+      <div class="modal__background"></div>
       <div class="modal__container">
         <button
           class="modal__exit"
@@ -100,15 +116,25 @@
             type="text"
             name="title"
             placeholder="Title"
+            required
           />
+          <span class="modal__error" id="modal-title-error"></span>
           <input
             class="modal__input"
             id="modal-link"
             type="text"
             name="link"
             placeholder="Image Link"
+            required
           />
-          <button class="modal__save" type="submit">Create</button>
+          <span class="modal__error" id="modal-link-error"></span>
+          <button
+            class="modal__save modal__save_disabled"
+            type="submit"
+            disabled
+          >
+            Create
+          </button>
         </form>
       </div>
     </div>
@@ -129,6 +155,7 @@
     </template>
 
     <div class="modal" id="image-modal">
+      <div class="modal__background"></div>
       <div class="modal__container modal__container_image">
         <button
           class="modal__exit modal__exit_image"
@@ -141,5 +168,6 @@
     </div>
 
     <script src="./scripts/index.js"></script>
+    <!-- <script src="./scripts/validation.js"></script> -->
   </body>
 </html>

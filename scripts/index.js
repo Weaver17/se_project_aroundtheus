@@ -49,6 +49,9 @@ const previewImageTitle = previewImageModal.querySelector(
   ".modal__image-title"
 );
 const modalCloseButtons = document.querySelectorAll(".modal__exit");
+const modalBackgrounds = Array.from(
+  document.querySelectorAll(".modal__background")
+);
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
@@ -58,10 +61,24 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
 
+function closePopupOnClick(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+function closePopupOnEscape(modal) {
+  modal.classList.remove("modal_opened");
+}
+
 modalCloseButtons.forEach((button) => {
   const modal = button.closest(".modal");
 
   button.addEventListener("click", () => closePopup(modal));
+});
+
+modalBackgrounds.forEach((modalBackground) => {
+  const modal = modalBackground.closest(".modal");
+
+  modalBackground.addEventListener("click", () => closePopupOnClick(modal));
 });
 
 function renderCards(cardData, wrapper) {

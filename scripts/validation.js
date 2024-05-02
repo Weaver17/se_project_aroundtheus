@@ -38,10 +38,10 @@ function toggleButtonState(inputEls, submitBtn) {
   if (foundInvalid) {
     submitBtn.classList.add("modal__save_disabled");
     submitBtn.disabled = true;
+  } else {
+    submitBtn.classList.remove("modal__save_disabled");
+    submitBtn.disabled = false;
   }
-
-  submitBtn.classList.remove("modal__save_disabled");
-  submitBtn.disabled = false;
 }
 
 function setEventListeners(formEl, options) {

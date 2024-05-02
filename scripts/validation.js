@@ -26,24 +26,22 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
-function disableBtn(submitBtn) {
-  submitBtn.disabled = true;
-  submitBtn.classList.add({ inactiveButtonClass });
+function toggleButtonState(inputEls, submitBtn) {
+  let foundInvalid = false;
 
-  return;
-}
+  inputEls.forEach((inputEl) => {
+    if (!inputEl.validity.valid) {
+      foundInvalid = true;
+    }
+  });
 
-function enableBtn(submitBtn) {
-  submitBtn.classList.remove({ inactiveButtonClass });
-  submitBtn.disabled = false;
-  return;
-}
-
-function toggleButtonState(inputEls) {
-  if (!hasInvalidInput(inputEls)) {
-    return enableBtn(submitBtn);
+  if (foundInvalid) {
+    submitBtn.classList.add("modal__save_disabled");
+    submitBtn.disabled = true;
   }
-  return disableBtn(submitBtn);
+
+  submitBtn.classList.remove("modal__save_disabled");
+  submitBtn.disabled = false;
 }
 
 function setEventListeners(formEl, options) {

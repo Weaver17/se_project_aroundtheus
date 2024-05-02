@@ -67,28 +67,32 @@
         ></button>
         <h3 class="modal__heading">Edit Profile</h3>
         <form class="modal__form" name="profile-form">
-          <input
-            class="modal__input"
-            id="modal-name"
-            type="text"
-            name="name"
-            placeholder="Name"
-            required
-            minlength="2"
-            maxlength="40"
-          />
-          <span class="modal__error" id="modal-name-error"></span>
-          <input
-            class="modal__input"
-            id="modal-description"
-            type="text"
-            name="description"
-            placeholder="Description"
-            required
-            minlength="2"
-            maxlength="200"
-          />
-          <span class="modal__error" id="modal-description-error"></span>
+          <div class="modal__input-error">
+            <input
+              class="modal__input"
+              id="modal-name"
+              type="text"
+              name="name"
+              placeholder="Name"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span class="modal__error" id="modal-name-error"></span>
+          </div>
+          <div class="modal__input-error">
+            <input
+              class="modal__input"
+              id="modal-description"
+              type="text"
+              name="description"
+              placeholder="Description"
+              required
+              minlength="2"
+              maxlength="200"
+            />
+            <span class="modal__error" id="modal-description-error"></span>
+          </div>
           <button
             class="modal__save modal__save_disabled"
             type="submit"
@@ -110,24 +114,28 @@
         ></button>
         <h3 class="modal__heading">New Place</h3>
         <form class="modal__form" name="card-form">
-          <input
-            class="modal__input"
-            id="modal-title"
-            type="text"
-            name="title"
-            placeholder="Title"
-            required
-          />
-          <span class="modal__error" id="modal-title-error"></span>
-          <input
-            class="modal__input"
-            id="modal-link"
-            type="text"
-            name="link"
-            placeholder="Image Link"
-            required
-          />
-          <span class="modal__error" id="modal-link-error"></span>
+          <div class="modal__input-error">
+            <input
+              class="modal__input"
+              id="modal-title"
+              type="text"
+              name="title"
+              placeholder="Title"
+              required
+            />
+            <span class="modal__error" id="modal-title-error"></span>
+          </div>
+          <div class="modal__input-error">
+            <input
+              class="modal__input"
+              id="modal-link"
+              type="text"
+              name="link"
+              placeholder="Image Link"
+              required
+            />
+            <span class="modal__error" id="modal-link-error"></span>
+          </div>
           <button
             class="modal__save modal__save_disabled"
             type="submit"

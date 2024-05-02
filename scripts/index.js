@@ -62,12 +62,6 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
 
-function closePopupWithEscape(modal) {
-  if (e.key === "Escape") {
-    closePopup(modal);
-  }
-}
-
 function renderCards(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
   wrapper.prepend(cardElement);
@@ -145,12 +139,10 @@ modalBackgrounds.forEach((modalBackground) => {
   modalBackground.addEventListener("click", () => closePopup(modal));
 });
 
-modals.forEach((modalBackground) => {
-  const modal = modalBackground.closest(".modal");
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    modals.forEach((modal) => {
       closePopup(modal);
-    }
-  });
+    });
+  }
 });

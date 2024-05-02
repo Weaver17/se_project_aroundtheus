@@ -52,6 +52,7 @@ const modalCloseButtons = document.querySelectorAll(".modal__exit");
 const modalBackgrounds = Array.from(
   document.querySelectorAll(".modal__background")
 );
+const modals = Array.from(document.querySelectorAll(".modal"));
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
@@ -61,25 +62,11 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
 
-function closePopupOnClick(modal) {
-  modal.classList.remove("modal_opened");
-}
-
-function closePopupOnEscape(modal) {
-  modal.classList.remove("modal_opened");
-}
-
-modalCloseButtons.forEach((button) => {
-  const modal = button.closest(".modal");
-
-  button.addEventListener("click", () => closePopup(modal));
-});
-
-modalBackgrounds.forEach((modalBackground) => {
-  const modal = modalBackground.closest(".modal");
-
-  modalBackground.addEventListener("click", () => closePopupOnClick(modal));
-});
+// function closePopupWithEscape(modal) {
+//   if (e.key === "Escape") {
+//     closePopup(modal);
+//   }
+// }
 
 function renderCards(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -144,4 +131,22 @@ initialCards.forEach((cardData) => renderCards(cardData, cardListEl));
 
 cardAddBtn.addEventListener("click", () => {
   openPopup(cardAddModal);
+});
+
+modalCloseButtons.forEach((button) => {
+  const modal = button.closest(".modal");
+
+  button.addEventListener("click", () => closePopup(modal));
+});
+
+modalBackgrounds.forEach((modalBackground) => {
+  const modal = modalBackground.closest(".modal");
+
+  modalBackground.addEventListener("click", () => closePopup(modal));
+});
+
+modals.forEach((modalBackground) => {
+  const modal = modalBackground.closest(".modal");
+
+  document.addEventListener("keydown", () => closePopup(modal));
 });

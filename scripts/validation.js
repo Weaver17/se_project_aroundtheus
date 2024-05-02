@@ -41,9 +41,9 @@ function enableBtn(submitBtn) {
 
 function toggleButtonState(inputEls) {
   if (!hasInvalidInput(inputEls)) {
-    return enableBtn(inputEls);
+    return enableBtn(submitBtn);
   }
-  return disableBtn(inputEls);
+  return disableBtn(submitBtn);
 }
 
 function setEventListeners(formEl, options) {

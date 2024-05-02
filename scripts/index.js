@@ -62,11 +62,11 @@ function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
 
-// function closePopupWithEscape(modal) {
-//   if (e.key === "Escape") {
-//     closePopup(modal);
-//   }
-// }
+function closePopupWithEscape(modal) {
+  if (e.key === "Escape") {
+    closePopup(modal);
+  }
+}
 
 function renderCards(cardData, wrapper) {
   const cardElement = getCardElement(cardData);
@@ -148,5 +148,9 @@ modalBackgrounds.forEach((modalBackground) => {
 modals.forEach((modalBackground) => {
   const modal = modalBackground.closest(".modal");
 
-  document.addEventListener("keydown", () => closePopup(modal));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closePopup(modal);
+    }
+  });
 });

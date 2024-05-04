@@ -26,22 +26,22 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
-function toggleButtonState(inputEls, submitBtn) {
-  let foundInvalid = false;
+function disableBtn(submitBtn, { inactiveButtonClass }) {
+  submitBtn.classList.add(inactiveButtonClass);
+  submitBtn.disabled = true;
+}
 
-  inputEls.forEach((inputEl) => {
-    if (!inputEl.validity.valid) {
-      foundInvalid = true;
-    }
-  });
+function enableBtn(submitBtn, { inactiveButtonClass }) {
+  submitBtn.classList.remove(inactiveButtonClass);
+  submitBtn.disabled = false;
+}
 
-  if (foundInvalid) {
-    submitBtn.classList.add("modal__save_disabled");
-    submitBtn.disabled = true;
-  } else {
-    submitBtn.classList.remove("modal__save_disabled");
-    submitBtn.disabled = false;
+function toggleButtonState(inputEls, submitBtn, { inactiveButtonClass }) {
+  if (hasInvalidInput(inputEls)) {
+    disableBtn(submitBtn, { inactiveButtonClass });
+    return;
   }
+  enableBtn(submitBtn, { inactiveButtonClass });
 }
 
 function setEventListeners(formEl, options) {
@@ -57,8 +57,8 @@ function setEventListeners(formEl, options) {
 }
 
 function enableValidation(options) {
-  const formElements = Array.from(document.querySelectorAll(".modal__form"));
-  formElements.forEach((formEl) => {
+  const formEls = Array.from(document.querySelectorAll(".modal__form"));
+  formEls.forEach((formEl) => {
     formEl.addEventListener("submit", (e) => {
       e.preventDefault();
     });

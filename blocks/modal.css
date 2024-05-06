@@ -58,10 +58,10 @@
 
 .modal__input-error {
   position: relative;
-  margin: 0;
+  margin: 0 0 30px;
   padding: 0;
   width: 358px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .modal__input {
@@ -76,10 +76,12 @@
 
 .modal__error {
   position: absolute;
+  top: 32px;
+  left: 0;
   width: 100%;
   padding: 0;
   margin: 5px 0 0;
-  display: none;
+  visibility: hidden;
   color: #ff0000;
   font-size: 12px;
   line-height: 14px;
@@ -115,12 +117,8 @@
   transition: 0.3s linear;
 }
 
-.modal__input-error:nth-child(1) {
-  padding-bottom: 30px;
-}
-
-.modal__input-error:nth-child(2) {
-  padding-bottom: 48px;
+.modal__input-error:last-of-type {
+  margin-bottom: 48px;
 }
 
 .modal_opened {
@@ -131,13 +129,18 @@
 }
 
 .modal__error_visible {
-  display: block;
+  visibility: visible;
 }
 
 .modal__save_disabled {
   background-color: #fff;
   color: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.modal__save_disabled:hover {
+  background-color: #fff;
+  cursor: default;
 }
 
 .modal__input_type_error {

@@ -55,11 +55,20 @@ const modalBackgrounds = Array.from(
 const modals = Array.from(document.querySelectorAll(".modal"));
 
 function openPopup(modal) {
+  document.addEventListener("keydown", closePopupWithEscape);
   modal.classList.add("modal_opened");
 }
 
 function closePopup(modal) {
+  document.removeEventListener("keydown", closePopupWithEscape);
   modal.classList.remove("modal_opened");
+}
+
+function closePopupWithEscape(e) {
+  if (e.key === "Escape") {
+    const openedPopup = document.querySelector(".modal_opened");
+    closePopup(openedPopup);
+  }
 }
 
 function renderCards(cardData, wrapper) {
@@ -137,12 +146,4 @@ modalBackgrounds.forEach((modalBackground) => {
   const modal = modalBackground.closest(".modal");
 
   modalBackground.addEventListener("click", () => closePopup(modal));
-});
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    modals.forEach((modal) => {
-      closePopup(modal);
-    });
-  }
 });

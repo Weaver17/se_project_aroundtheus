@@ -1,4 +1,7 @@
-const initialCards = [
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+
+const cardData = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -24,6 +27,9 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+const card = new Card(cardData, "#card-template", handleImageClick);
+card.getView();
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditBtn = document.querySelector("#profile-edit-button");
@@ -52,7 +58,27 @@ const modalCloseButtons = document.querySelectorAll(".modal__exit");
 const modalBackgrounds = Array.from(
   document.querySelectorAll(".modal__background")
 );
-const modals = Array.from(document.querySelectorAll(".modal"));
+const validationSettings = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__save",
+  inactiveButtonClass: "modal__save_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+const editFormEl = profileEditModal.querySelector(".modal__form");
+const addFormEl = cardAddModal.querySelector(".modal__form");
+const editFormValidator = new FormValidator(validationSettings, editFormEl);
+const addFormValidator = new FormValidator(validationSettings, addFormEl);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
+function handleImageClick() {
+  previewImage.src = cardData.link;
+  previewImage.alt = cardData.name;
+  previewImageTitle.textContent = cardData.name;
+  openPopup(previewImageModal);
+}
 
 function openPopup(modal) {
   document.addEventListener("keydown", closePopupWithEscape);
@@ -110,9 +136,9 @@ function getCardElement(cardData) {
     openPopup(previewImageModal);
   });
 
-  likeButton.addEventListener("click", () =>
-    likeButton.classList.toggle("card__like-button_active")
-  );
+  // likeButton.addEventListener("click", () =>
+  //   likeButton.classList.toggle("card__like-button_active")
+  // );
 
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
@@ -130,7 +156,7 @@ profileEditBtn.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 cardAddForm.addEventListener("submit", handleCardAddSubmit);
 
-initialCards.forEach((cardData) => renderCards(cardData, cardListEl));
+cardData.forEach((cardData) => renderCards(cardData, cardListEl));
 
 cardAddBtn.addEventListener("click", () => {
   openPopup(cardAddModal);

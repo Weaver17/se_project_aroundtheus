@@ -36,12 +36,12 @@ export default class FormValidator {
     errorMessageEl.classList.remove(this._errorClass);
   }
 
-  _hasInvalidInput(inputList) {
-    return !inputList.every((inputEl) => inputEl.validity.valid);
+  _hasInvalidInput() {
+    return !this._inputEls.every((inputEl) => inputEl.validity.valid);
   }
 
-  _toggleButtonState(inputEls) {
-    if (this._hasInvalidInput(inputEls)) {
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._inputEls)) {
       this.disableBtn(this._submitBtn, this._inactiveButtonClass);
       return;
     }
@@ -66,7 +66,7 @@ export default class FormValidator {
     this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", () => {
         this._checkInputValidity(inputEl);
-        this._toggleButtonState(this._inputEls);
+        this._toggleButtonState();
       });
     });
   }
@@ -74,6 +74,7 @@ export default class FormValidator {
   enableValidation() {
     this._formElement.addEventListener("submit", (e) => {
       e.preventDefault();
+      this.disableBtn();
     });
 
     this._setEventListeners();

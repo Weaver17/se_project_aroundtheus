@@ -11,14 +11,13 @@
     <meta name="keywords" content="Images, Pictures, US, Sharing" />
     <meta name="author" content="Andrew Weaver" />
     <link rel="favicon" href="favicon.ico" />
-    <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
           class="header__logo"
-          src="images/Logo.svg"
+          src="<%=require('./images/Logo.svg')%>"
           alt="Around the US logo"
         />
       </header>
@@ -26,8 +25,9 @@
         <section class="profile page__section">
           <img
             class="profile__avatar"
-            src="images/Jacques-avatar.svg"
-            alt="User profile picture"
+            src="<%=require('./images/Jacques-avatar.svg')%>"
+            alt="User profile
+          picture"
           />
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
@@ -176,7 +176,5 @@
         <p class="modal__image-title"></p>
       </div>
     </div>
-
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>

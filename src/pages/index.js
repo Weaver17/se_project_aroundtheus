@@ -10,14 +10,6 @@ import {
   profileEditBtn,
   cardAddBtn,
   profileInfo,
-  profileName,
-  profileNameInput,
-  profileDescription,
-  profileDescriptionInput,
-  cardTitleInput,
-  cardLinkInput,
-  previewImage,
-  previewImageTitle,
 } from "../components/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
@@ -38,7 +30,12 @@ const CardSection = new Section(
   {
     items: cardData,
     renderer: (card) => {
-      const CardElement = new Card(card, "#card-template", handleImageClick);
+      const CardElement = new Card({
+        name: card.name,
+        link: card.link,
+        cardSelector: "#card-template",
+        handleImageClick: handleImageClick,
+      });
       CardSection.addItems(CardElement.getView());
     },
   },
@@ -71,9 +68,11 @@ function handleCardAddSubmit(data) {
 }
 
 function handleProfileFormSubmit(data) {
-  data = ProfileInfo.setUserInfo();
-  CardAddForm.close();
-  CardAddForm.reset();
+  data = ProfileInfo;
+  ProfileForm.close();
+  ProfileInfo.setUserInfo();
+  console.log(ProfileInfo);
+  console.log(ProfileForm._getInputValues());
 }
 
 // LISTENERS //

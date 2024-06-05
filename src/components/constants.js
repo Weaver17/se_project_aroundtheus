@@ -32,7 +32,7 @@ export const selectors = {
 
 export const profileInfo = {
   name: document.querySelector(".profile__name").textContent,
-  job: document.querySelector(".profile__description").textContent,
+  description: document.querySelector(".profile__description").textContent,
 };
 
 export const validationSettings = {

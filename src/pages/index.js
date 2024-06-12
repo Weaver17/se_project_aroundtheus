@@ -80,7 +80,10 @@ function handleCardAddSubmit(data) {
   console.log(NewCard._link);
 }
 
-function handleProfileFormSubmit(data) {}
+function handleProfileFormSubmit(data) {
+  ProfileInfo.setUserInfo(data);
+  ProfileForm.close();
+}
 
 // LISTENERS //
 profileEditBtn.addEventListener("click", () => {

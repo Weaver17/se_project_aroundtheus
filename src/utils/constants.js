@@ -34,6 +34,8 @@ export const profileInfo = {
   name: document.querySelector(".profile__name").textContent,
   description: document.querySelector(".profile__description").textContent,
 };
+export const profileName = profileInfo.name;
+export const profileDescription = profileInfo.description;
 
 export const validationSettings = {
   inputSelector: ".modal__input",
@@ -51,10 +53,7 @@ export const addFormEl = cardAddModal.querySelector(".modal__form");
 
 export const profileEditBtn = document.querySelector("#profile-edit-button");
 export const cardAddBtn = document.querySelector("#add-card-button");
-export const profileName = document.querySelector(".profile__name");
-export const profileDescription = document.querySelector(
-  ".profile__description"
-);
+
 export const profileNameInput = document.querySelector("#modal-name");
 export const profileDescriptionInput =
   document.querySelector("#modal-description");

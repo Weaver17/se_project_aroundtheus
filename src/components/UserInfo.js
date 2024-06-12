@@ -1,4 +1,4 @@
-import { profileNameInput, profileDescriptionInput } from "./constants";
+import { profileNameInput, profileDescriptionInput } from "../utils/constants";
 
 export default class UserInfo {
   constructor({ name, description }) {
@@ -11,8 +11,8 @@ export default class UserInfo {
     profileDescriptionInput.value = this._job;
   }
 
-  setUserInfo() {
-    this._name = profileNameInput.value;
-    this._job = profileDescriptionInput.value;
+  setUserInfo({ name, description }) {
+    this._name = name;
+    this._job = description;
   }
 }

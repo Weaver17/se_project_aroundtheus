@@ -10,7 +10,13 @@ import {
   profileEditBtn,
   cardAddBtn,
   profileInfo,
-} from "../components/constants";
+  profileDescriptionInput,
+  profileNameInput,
+  profileName,
+  profileDescription,
+  cardLinkInput,
+  cardTitleInput,
+} from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
@@ -19,7 +25,7 @@ import PopupwithForm from "../components/PopupwithForm";
 import UserInfo from "../components/UserInfo";
 
 // CLASSES //
-const ProfileInfo = new UserInfo(profileInfo);
+let ProfileInfo = new UserInfo(profileInfo);
 const ProfileForm = new PopupwithForm(
   "#profile-edit-modal",
   handleProfileFormSubmit
@@ -59,21 +65,22 @@ function handleImageClick(card) {
 }
 
 function handleCardAddSubmit(data) {
-  const NewCard = new Card(
-    { name: data.cardTitle, link: data.cardLink },
-    "#card-template",
-    handleImageClick
-  );
+  const NewCard = new Card({
+    name: data.cardTitle,
+    link: data.cardLink,
+    cardSelector: "#card-template",
+    handleImageClick: handleImageClick,
+  });
   CardSection.addItems(NewCard.getView());
+  CardAddForm.close();
+  cardLinkInput.value = "";
+  cardTitleInput.value = "";
+  console.log(data);
+  console.log(NewCard._name);
+  console.log(NewCard._link);
 }
 
-function handleProfileFormSubmit(data) {
-  data = ProfileInfo;
-  ProfileForm.close();
-  ProfileInfo.setUserInfo();
-  console.log(ProfileInfo);
-  console.log(ProfileForm._getInputValues());
-}
+function handleProfileFormSubmit(data) {}
 
 // LISTENERS //
 profileEditBtn.addEventListener("click", () => {

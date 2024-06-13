@@ -7,12 +7,12 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    profileNameInput.value = this._name;
-    profileDescriptionInput.value = this._job;
+    profileNameInput.value = this._name.textContent;
+    profileDescriptionInput.value = this._job.textContent;
   }
 
   setUserInfo({ name, description }) {
-    this._name = name;
-    this._job = description;
+    this._name.textContent = name;
+    this._job.textContent = description;
   }
 }

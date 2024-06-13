@@ -10,12 +10,6 @@ import {
   profileEditBtn,
   cardAddBtn,
   profileInfo,
-  profileDescriptionInput,
-  profileNameInput,
-  profileName,
-  profileDescription,
-  cardLinkInput,
-  cardTitleInput,
 } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
@@ -25,7 +19,7 @@ import PopupwithForm from "../components/PopupwithForm";
 import UserInfo from "../components/UserInfo";
 
 // CLASSES //
-let ProfileInfo = new UserInfo(profileInfo);
+const ProfileInfo = new UserInfo(profileInfo);
 const ProfileForm = new PopupwithForm(
   "#profile-edit-modal",
   handleProfileFormSubmit
@@ -66,18 +60,14 @@ function handleImageClick(card) {
 
 function handleCardAddSubmit(data) {
   const NewCard = new Card({
-    name: data.cardTitle,
-    link: data.cardLink,
+    name: data.title,
+    link: data.link,
     cardSelector: "#card-template",
     handleImageClick: handleImageClick,
   });
   CardSection.addItems(NewCard.getView());
   CardAddForm.close();
-  cardLinkInput.value = "";
-  cardTitleInput.value = "";
-  console.log(data);
-  console.log(NewCard._name);
-  console.log(NewCard._link);
+  console.log(NewCard.getView());
 }
 
 function handleProfileFormSubmit(data) {

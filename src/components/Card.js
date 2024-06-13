@@ -4,6 +4,10 @@ export default class Card {
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
   }
 
   _setEventListeners() {
@@ -26,11 +30,6 @@ export default class Card {
   };
 
   getView() {
-    this._cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".card")
-      .cloneNode(true);
-
     this._cardImageEl = this._cardElement.querySelector(".card__image");
     this._cardTitleEl = this._cardElement.querySelector(".card__title");
     this._cardLikeButton =

@@ -31,10 +31,10 @@ export const selectors = {
 };
 
 export const profileInfo = {
-  name: document.querySelector(".profile__name").textContent,
-  description: document.querySelector(".profile__description").textContent,
+  name: document.querySelector(".profile__name"),
+  description: document.querySelector(".profile__description"),
 };
-export const profileName = profileInfo.name;
+export let profileName = profileInfo.name;
 export const profileDescription = profileInfo.description;
 
 export const validationSettings = {

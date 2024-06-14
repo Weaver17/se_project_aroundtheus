@@ -10,6 +10,7 @@ import {
   profileEditBtn,
   cardAddBtn,
   profileInfo,
+  cardAddForm,
 } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
@@ -19,7 +20,10 @@ import PopupwithForm from "../components/PopupwithForm";
 import UserInfo from "../components/UserInfo";
 
 // CLASSES //
+// "Start class names with a capital letter, use PascalCase for names."
+// review says to use camelCase for variables... but classes need upper case, right?
 const ProfileInfo = new UserInfo(profileInfo);
+
 const ProfileForm = new PopupwithForm(
   "#profile-edit-modal",
   handleProfileFormSubmit
@@ -29,15 +33,7 @@ const CardPreview = new PopupWithImage("#image-modal");
 const CardSection = new Section(
   {
     items: cardData,
-    renderer: (card) => {
-      const CardElement = new Card({
-        name: card.name,
-        link: card.link,
-        cardSelector: "#card-template",
-        handleImageClick: handleImageClick,
-      });
-      CardSection.addItems(CardElement.getView());
-    },
+    renderer: renderCard,
   },
   selectors.cardSection
 );
@@ -59,15 +55,9 @@ function handleImageClick(card) {
 }
 
 function handleCardAddSubmit(data) {
-  const NewCard = new Card({
-    name: data.title,
-    link: data.link,
-    cardSelector: "#card-template",
-    handleImageClick: handleImageClick,
-  });
-  CardSection.addItems(NewCard.getView());
+  renderCard({ name: data.title, link: data.link });
   CardAddForm.close();
-  console.log(NewCard.getView());
+  cardAddForm.reset();
 }
 
 function handleProfileFormSubmit(data) {
@@ -75,8 +65,20 @@ function handleProfileFormSubmit(data) {
   ProfileForm.close();
 }
 
+function renderCard(card) {
+  const CardElement = new Card({
+    name: card.name,
+    link: card.link,
+    cardSelector: "#card-template",
+    handleImageClick: handleImageClick,
+  });
+  CardSection.addItem(CardElement.getView());
+}
+
 // LISTENERS //
 profileEditBtn.addEventListener("click", () => {
+  // Reviewer stated "You should fill the form using the info", but it was my understanding
+  // that it already does that with the getUserInfo method upon opening the popup.
   ProfileInfo.getUserInfo();
   ProfileForm.open();
 });

@@ -7,8 +7,10 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    profileNameInput.value = this._name.textContent;
-    profileDescriptionInput.value = this._job.textContent;
+    return (
+      (profileNameInput.value = this._name.textContent),
+      (profileDescriptionInput.value = this._job.textContent)
+    );
   }
 
   setUserInfo({ name, description }) {

@@ -11,6 +11,8 @@ import {
   cardAddBtn,
   profileInfo,
   cardAddForm,
+  profileNameInput,
+  profileDescriptionInput,
 } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
@@ -79,7 +81,8 @@ function renderCard(card) {
 
 // LISTENERS //
 profileEditBtn.addEventListener("click", () => {
-  profileInfoClass.getUserInfo();
+  profileDescriptionInput.value = profileInfoClass.getUserInfo().description;
+  profileNameInput.value = profileInfoClass.getUserInfo().name;
   profileFormClass.open();
 });
 

@@ -81,8 +81,9 @@ function renderCard(card) {
 
 // LISTENERS //
 profileEditBtn.addEventListener("click", () => {
-  profileDescriptionInput.value = profileInfoClass.getUserInfo().description;
-  profileNameInput.value = profileInfoClass.getUserInfo().name;
+  const { name, description } = profileInfoClass.getUserInfo();
+  profileNameInput.value = name;
+  profileDescriptionInput.value = description;
   profileFormClass.open();
 });
 

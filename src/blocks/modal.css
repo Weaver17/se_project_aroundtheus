@@ -61,7 +61,6 @@
   margin: 0 0 30px;
   padding: 0;
   width: 358px;
-  /* overflow: hidden; */
 }
 
 .modal__input {
@@ -121,6 +120,22 @@
   margin-bottom: 48px;
 }
 
+.modal__confirm {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+  width: 358px;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 38px;
+}
+
 .modal_opened {
   display: flex;
   visibility: visible;
@@ -170,9 +185,25 @@
     width: 238px;
   }
 
+  .modal__input-error {
+    width: 238px;
+  }
+
+  .modal__input {
+    width: 238px;
+  }
+
   .modal__save {
     font-size: 14px;
     line-height: 17px;
     height: 46px;
+  }
+
+  .modal__confirm {
+    font-size: 14px;
+    line-height: 17px;
+    height: 46px;
+    width: 238px;
+    margin-top: 24px;
   }
 }

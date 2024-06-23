@@ -23,12 +23,20 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/Jacques-avatar.svg')%>"
-            alt="User profile
+          <div class="profile__avatar">
+            <button
+              class="profile__avatar-button"
+              id="profile-avatar-button"
+              aria-label="change"
+              type="button"
+            ></button>
+            <img
+              class="profile__avatar-image"
+              src="<%=require('./images/Jacques-avatar.svg')%>"
+              alt="User profile
           picture"
-          />
+            />
+          </div>
           <div class="profile__info">
             <h1 class="profile__name">Jacques Cousteau</h1>
 
@@ -174,6 +182,19 @@
         ></button>
         <img class="modal__image" id="modal-image" src="" alt="" />
         <p class="modal__image-title" id="modal-image-title"></p>
+      </div>
+    </div>
+
+    <div class="modal" id="confirm-modal">
+      <div class="modal__background"></div>
+      <div class="modal__container">
+        <button
+          class="modal__exit"
+          id="confirm-modal-exit-button"
+          type="button"
+        ></button>
+        <h3 class="modal__heading">Are you sure?</h3>
+        <button class="modal__confirm" type="submit">Yes</button>
       </div>
     </div>
   </body>

@@ -49,7 +49,6 @@ cardSectionClass.renderItems(cardData);
 cardPreviewClass.setEventListeners();
 profileFormClass.setEventListeners();
 cardAddFormClass.setEventListeners();
-
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 

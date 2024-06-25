@@ -1,4 +1,4 @@
-class Api {
+export default class Api {
   constructor(options) {
     // constructor body
   }
@@ -17,3 +17,5 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+// submit -- onload = button.textContent = "Saving..."

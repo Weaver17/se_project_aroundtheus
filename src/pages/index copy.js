@@ -78,13 +78,14 @@ const pictureFormValidator = new FormValidator(
 );
 
 // INTITIALIZE //
-// cardPreviewClass.setEventListeners();
-// profileFormClass.setEventListeners();
-// cardAddFormClass.setEventListeners();
-// pictureFormClass.setEventListeners();
-// editFormValidator.enableValidation();
-// addFormValidator.enableValidation();
-// pictureFormValidator.enableValidation();
+cardSectionClass.renderItems(cardData);
+cardPreviewClass.setEventListeners();
+profileFormClass.setEventListeners();
+cardAddFormClass.setEventListeners();
+pictureFormClass.setEventListeners();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+pictureFormValidator.enableValidation();
 
 // FUNCTIONS //
 function handleImageClick(card) {

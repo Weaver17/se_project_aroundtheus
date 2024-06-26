@@ -101,6 +101,22 @@
   cursor: pointer;
 }
 
+.modal__confirm {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+  width: 358px;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: -16px;
+}
+
 .modal__exit:hover {
   opacity: 0.6;
   transition: 0.3s linear;
@@ -119,22 +135,6 @@
 
 .modal__input-error:last-of-type {
   margin-bottom: 48px;
-}
-
-.modal__confirm {
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 2px;
-  background-color: #000;
-  color: #fff;
-  height: 50px;
-  width: 358px;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  cursor: pointer;
-  margin-top: 38px;
 }
 
 .modal_opened {

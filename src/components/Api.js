@@ -1,21 +1,30 @@
 export default class Api {
-  constructor(options) {
-    // constructor body
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._authorization = headers.authorization;
+    this._contentType = headers.contentType;
   }
 
-  getInitialCards() {
-    // ...
+  async getInitialCards() {
+    const res = await fetch(`${this._baseUrl}/cards`, {
+      method: "GET",
+      headers: {
+        authorization: this._authorization,
+      },
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    return await res.json();
+  }
+  catch(err) {
+    console.error("I got an error:", err.message);
+    throw err;
   }
 
   // other methods for working with the API
 }
-
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "40adfe4e-c0e4-40a1-9506-b555db893f72",
-    "Content-Type": "application/json",
-  },
-});
 
 // submit -- onload = button.textContent = "Saving..."

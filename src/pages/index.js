@@ -17,6 +17,8 @@ import {
   pictureEditBtn,
   pictureLinkInput,
   pictureEl,
+  cardLikeBtn,
+  cardDeleteBtn,
 } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
@@ -37,13 +39,43 @@ const api = new Api({
 
 api
   .getInitialCards()
-  .then((cards) => {
-    console.log(cards);
-    cardSectionClass.renderItems(cards);
+  .then((cardData) => {
+    const cardSection = new Section(
+      {
+        items: cardData,
+        renderer: (cardData) => {
+          const initialCard = createCard(cardData);
+          cardSection.addItem(initialCard);
+        },
+      },
+      ".gallery__cards"
+    );
+    cardSection.renderItems();
   })
-  .catch((err) => {
-    console.error(`Error: ${err}`);
+  .catch((err) => console.error(err));
+
+api
+  .getUserInfo()
+  .then((data) => {
+    console.log(data);
+    profileInfoClass.setUserInfo(data.name, data.about);
+    profileInfoClass.setAvatar(data.avatar);
+  })
+  .catch((err) => console.error(err));
+
+const createCard = (cardData) => {
+  const card = new Card({
+    name: cardData.name,
+    link: cardData.link,
+    isLiked: cardData.isLiked,
+    _id: cardData._id,
+    cardSelector: "#card-template",
+    handleImageClick: handleImageClick,
+    handleDeleteBtn: handleDeleteBtn,
+    handleLikeBtn: handleLikeBtn,
   });
+  return card.getView();
+};
 
 // CLASSES //
 
@@ -58,18 +90,13 @@ const profileFormClass = new PopupwithForm(
   "#profile-edit-modal",
   handleProfileFormSubmit
 );
+
 const cardAddFormClass = new PopupwithForm(
   "#add-card-modal",
   handleCardAddSubmit
 );
 const cardPreviewClass = new PopupWithImage("#image-modal");
-const cardSectionClass = new Section(
-  {
-    items: cardData,
-    renderer: renderCard,
-  },
-  selectors.cardSection
-);
+
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
 const addFormValidator = new FormValidator(validationSettings, addFormEl);
 const pictureFormValidator = new FormValidator(
@@ -78,13 +105,13 @@ const pictureFormValidator = new FormValidator(
 );
 
 // INTITIALIZE //
-// cardPreviewClass.setEventListeners();
-// profileFormClass.setEventListeners();
-// cardAddFormClass.setEventListeners();
-// pictureFormClass.setEventListeners();
-// editFormValidator.enableValidation();
-// addFormValidator.enableValidation();
-// pictureFormValidator.enableValidation();
+cardPreviewClass.setEventListeners();
+profileFormClass.setEventListeners();
+cardAddFormClass.setEventListeners();
+pictureFormClass.setEventListeners();
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+pictureFormValidator.enableValidation();
 
 // FUNCTIONS //
 function handleImageClick(card) {
@@ -92,14 +119,38 @@ function handleImageClick(card) {
 }
 
 function handleCardAddSubmit(data) {
-  renderCard({ name: data.title, link: data.link });
-  cardAddFormClass.close();
-  cardAddForm.reset();
+  cardAddFormClass.viewLoading(true);
+  api
+    .addCard(data)
+    .then((data) => {
+      cardSection.addItem(createCard({ name: data.name, link: data.link }));
+      addFormValidator.disableBtn();
+      cardAddFormClass.reset();
+      cardAddFormClass.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      cardAddFormClass.viewLoading(false);
+    });
 }
 
-function handleProfileFormSubmit(data) {
-  profileInfoClass.setUserInfo(data);
-  profileFormClass.close();
+function handleProfileFormSubmit(inputData) {
+  profileFormClass.viewLoading(true);
+  api
+    .setUserInfo(inputData.name, inputData.about)
+    .then((data) => {
+      profileInfoClass.setUserInfo(data.name, data.about);
+      editFormValidator.disableBtn();
+      profileFormClass.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      profileInfoClass.viewLoading(false);
+    });
 }
 
 function handlePictureSubmit() {
@@ -107,15 +158,32 @@ function handlePictureSubmit() {
   pictureFormClass.close();
 }
 
-function renderCard(card) {
-  const cardElementClass = new Card({
-    name: card.name,
-    link: card.link,
-    cardSelector: "#card-template",
-    handleImageClick: handleImageClick,
-  });
-  cardSectionClass.addItem(cardElementClass.getView());
+function handleLikeBtn(card) {
+  const cardId = card.getCardId();
+  const isLiked = card.getLikedStatus();
+
+  if (isLiked) {
+    api
+      .removeLike(cardId)
+      .then((isLikedCard) => {
+        card.handleIsLiked(isLikedCard.getLikedStatus);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  } else {
+    api
+      .addLike(cardId)
+      .then((isLikedCard) => {
+        card.handleIsLiked(isLikedCard.getLikedStatus);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }
+
+function handleDeleteBtn() {}
 
 // LISTENERS //
 pictureEditBtn.addEventListener("click", () => {

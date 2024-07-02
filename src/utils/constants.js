@@ -25,6 +25,8 @@ export const cardData = [
   },
 ];
 
+// export const cardSection = document.querySelector(".gallery__cards");
+
 export const selectors = {
   cardSection: ".gallery__cards",
   infoSection: ".profile",
@@ -33,6 +35,8 @@ export const selectors = {
 export const profileInfo = {
   name: document.querySelector(".profile__name"),
   description: document.querySelector(".profile__description"),
+  avatar: document.querySelector(".profile__avatar-image"),
+  _id: "203ef5b29b8491c8911cf220",
 };
 
 export const validationSettings = {
@@ -64,3 +68,5 @@ export const previewImageTitle = document.querySelector("#modal-image-title");
 export const pictureEditBtn = document.querySelector("#profile-avatar-button");
 export const pictureLinkInput = document.querySelector("#modal-picture");
 export const pictureEl = document.querySelector(".profile__avatar-image");
+export const cardLikeBtn = document.querySelector(".card__like-button");
+export const cardDeleteBtn = document.querySelector(".card__delete-button");

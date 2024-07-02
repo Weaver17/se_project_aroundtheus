@@ -1,16 +1,13 @@
 import PopupwithForm from "./PopupwithForm";
 
 export default class Card {
-  constructor({
-    name,
-    link,
-    isLiked,
-    _id,
+  constructor(
+    { name, link, isLiked, _id },
     cardSelector,
     handleImageClick,
     handleDeleteBtn,
-    handleLikeBtn,
-  }) {
+    handleLikeBtn
+  ) {
     this._name = name;
     this._link = link;
     this._isLiked = isLiked;
@@ -24,19 +21,12 @@ export default class Card {
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-    this._confirmModalEl = new PopupwithForm(
-      "#confirm-modal",
-      this._handleConfirmBtn
-    );
-    this._confirmForm = document.querySelector("#confirm-modal-form");
   }
 
   _setEventListeners() {
     this._cardLikeButton.addEventListener("click", this._handleLikeBtn(this));
 
     this._cardDeleteBtn.addEventListener("click", this._handleDeleteBtn(this));
-
-    this._confirmForm.addEventListener("submit", this._handleConfirmBtn);
 
     this._cardImageEl.addEventListener("click", () => {
       this._handleImageClick(this);
@@ -57,10 +47,10 @@ export default class Card {
 
   handleIsLiked(isLiked) {
     this._isLiked = isLiked;
-    this._renderLikes();
+    this._renderisLiked();
   }
 
-  _renderLikes() {
+  _renderisLiked() {
     if (this._isLiked) {
       this._cardLikeButton.classList.add("card__like-button_active");
     } else {
@@ -82,7 +72,7 @@ export default class Card {
     this._cardTitleEl.textContent = this._name;
 
     this._setEventListeners();
-    this._renderLikes();
+    this._renderisLiked();
 
     return this._cardElement;
   }

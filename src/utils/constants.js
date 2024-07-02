@@ -70,3 +70,5 @@ export const pictureLinkInput = document.querySelector("#modal-picture");
 export const pictureEl = document.querySelector(".profile__avatar-image");
 export const cardLikeBtn = document.querySelector(".card__like-button");
 export const cardDeleteBtn = document.querySelector(".card__delete-button");
+
+export const confirmModalForm = document.querySelector("#confirm-modal-form");

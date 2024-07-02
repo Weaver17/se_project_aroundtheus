@@ -19,12 +19,14 @@ import {
   pictureEl,
   cardLikeBtn,
   cardDeleteBtn,
+  confirmModalForm,
 } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
 import Section from "../components/Section";
 import PopupWithImage from "../components/PopupwithImage";
 import PopupwithForm from "../components/PopupwithForm";
+import PopupWithConfirm from "../components/PopupWithConfirm";
 import UserInfo from "../components/UserInfo";
 import Api from "../components/Api";
 
@@ -39,7 +41,7 @@ const api = new Api({
 
 api
   .getInitialCards()
-  .then((cardData) => {
+  .then(() => {
     const cardSection = new Section(
       {
         items: cardData,
@@ -64,16 +66,18 @@ api
   .catch((err) => console.error(err));
 
 const createCard = (cardData) => {
-  const card = new Card({
-    name: cardData.name,
-    link: cardData.link,
-    isLiked: cardData.isLiked,
-    _id: cardData._id,
-    cardSelector: "#card-template",
-    handleImageClick: handleImageClick,
-    handleDeleteBtn: handleDeleteBtn,
-    handleLikeBtn: handleLikeBtn,
-  });
+  const card = new Card(
+    {
+      name: cardData.name,
+      link: cardData.link,
+      isLiked: cardData.isLiked,
+      _id: cardData._id,
+    },
+    "#card-template",
+    handleImageClick,
+    handleDeleteBtn,
+    handleLikeBtn
+  );
   return card.getView();
 };
 
@@ -95,6 +99,9 @@ const cardAddFormClass = new PopupwithForm(
   "#add-card-modal",
   handleCardAddSubmit
 );
+
+const confirmFormClass = new PopupWithConfirm("#confirm-modal");
+
 const cardPreviewClass = new PopupWithImage("#image-modal");
 
 const editFormValidator = new FormValidator(validationSettings, editFormEl);
@@ -109,6 +116,7 @@ cardPreviewClass.setEventListeners();
 profileFormClass.setEventListeners();
 cardAddFormClass.setEventListeners();
 pictureFormClass.setEventListeners();
+confirmFormClass.setEventListeners();
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 pictureFormValidator.enableValidation();
@@ -153,37 +161,45 @@ function handleProfileFormSubmit(inputData) {
     });
 }
 
-function handlePictureSubmit() {
-  pictureEl.src = pictureLinkInput.value;
-  pictureFormClass.close();
+function handlePictureSubmit(image) {
+  api.changeAvatar(image).then((avatar) => {
+    profileInfoClass.setAvatar(avatar.src);
+  });
 }
 
 function handleLikeBtn(card) {
   const cardId = card.getCardId();
   const isLiked = card.getLikedStatus();
+  console.log(cardId);
 
-  if (isLiked) {
-    api
-      .removeLike(cardId)
-      .then((isLikedCard) => {
-        card.handleIsLiked(isLikedCard.getLikedStatus);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  } else {
-    api
-      .addLike(cardId)
-      .then((isLikedCard) => {
-        card.handleIsLiked(isLikedCard.getLikedStatus);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
+  // if (isLiked) {
+  //   api
+  //     .removeLike(cardId)
+  //     .then((isLikedCard) => {
+  //       card.handleIsLiked(isLikedCard.getLikedStatus);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // } else {
+  //   api
+  //     .addLike(cardId)
+  //     .then((isLikedCard) => {
+  //       card.handleIsLiked(isLikedCard.getLikedStatus);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }
 }
 
-function handleDeleteBtn() {}
+function handleDeleteBtn(card) {
+  confirmFormClass.open();
+
+  confirmFormClass.handleConfirm(() => {
+    api.removeCard(card._id);
+  });
+}
 
 // LISTENERS //
 pictureEditBtn.addEventListener("click", () => {

@@ -17,6 +17,7 @@ import {
   pictureEditBtn,
   pictureLinkInput,
   pictureEl,
+  confirmModalForm,
 } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";

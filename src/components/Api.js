@@ -44,25 +44,10 @@ export default class Api {
       .catch((err) => console.error(err));
   }
 
-  addLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes/`, {
-      method: "PUT",
+  setCardLiked(cardId, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
-      body: JSON.stringify({
-        isLiked: true,
-      }),
-    })
-      .then(this._handleServerResponse)
-      .catch((err) => console.error(err));
-  }
-
-  removeLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes/`, {
-      method: "DELETE",
-      headers: this._headers,
-      body: JSON.stringify({
-        isLiked: false,
-      }),
     })
       .then(this._handleServerResponse)
       .catch((err) => console.error(err));
@@ -90,12 +75,12 @@ export default class Api {
       .catch((err) => console.error(err));
   }
 
-  changeAvatar(avatar) {
+  changeAvatar(avatarURL) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar,
+        avatar: avatarURL,
       }),
     })
       .then(this._checkResponse)

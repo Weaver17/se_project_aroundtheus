@@ -41,7 +41,7 @@ const api = new Api({
 
 api
   .getInitialCards()
-  .then(() => {
+  .then((cardData) => {
     const cardSection = new Section(
       {
         items: cardData,
@@ -168,36 +168,32 @@ function handlePictureSubmit(image) {
 }
 
 function handleLikeBtn(card) {
-  const cardId = card.getCardId();
-  const isLiked = card.getLikedStatus();
-  console.log(cardId);
-
-  // if (isLiked) {
-  //   api
-  //     .removeLike(cardId)
-  //     .then((isLikedCard) => {
-  //       card.handleIsLiked(isLikedCard.getLikedStatus);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // } else {
-  //   api
-  //     .addLike(cardId)
-  //     .then((isLikedCard) => {
-  //       card.handleIsLiked(isLikedCard.getLikedStatus);
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }
+  api
+    .setCardLiked(card.id, card.getLikedStatus())
+    .then((updatedCard) => {
+      card.handleIsLiked(updatedCard.isLiked);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 
 function handleDeleteBtn(card) {
+  console.log(card);
   confirmFormClass.open();
-
   confirmFormClass.handleConfirm(() => {
-    api.removeCard(card._id);
+    confirmFormClass.viewLoading(true);
+    api
+      .removeCard(card.id)
+      .then(() => {
+        card.removeCard();
+        confirmFormClass.viewLoading(false);
+        confirmFormClass.close();
+      })
+      .catch((err) => {
+        console.error("Failed to delete card:", err);
+        confirmFormClass.viewLoading(false);
+      });
   });
 }
 

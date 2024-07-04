@@ -19,7 +19,7 @@ import {
   pictureEl,
   cardLikeBtn,
   cardDeleteBtn,
-  confirmModalForm,
+  confirmModalBtn,
 } from "../utils/constants";
 import Card from "../components/Card";
 import FormValidator from "../components/FormValidator";
@@ -29,6 +29,8 @@ import PopupwithForm from "../components/PopupwithForm";
 import PopupWithConfirm from "../components/PopupWithConfirm";
 import UserInfo from "../components/UserInfo";
 import Api from "../components/Api";
+
+let cardSection;
 
 // API //
 const api = new Api({
@@ -41,10 +43,10 @@ const api = new Api({
 
 api
   .getInitialCards()
-  .then((cardData) => {
-    const cardSection = new Section(
+  .then((cards) => {
+    cardSection = new Section(
       {
-        items: cardData,
+        items: cards,
         renderer: (cardData) => {
           const initialCard = createCard(cardData);
           cardSection.addItem(initialCard);
@@ -54,12 +56,11 @@ api
     );
     cardSection.renderItems();
   })
-  .catch((err) => console.error(err));
+  .catch((err) => console.error(`Error setting up card section, ${err}`));
 
 api
   .getUserInfo()
   .then((data) => {
-    console.log(data);
     profileInfoClass.setUserInfo(data.name, data.about);
     profileInfoClass.setAvatar(data.avatar);
   })
@@ -126,29 +127,31 @@ function handleImageClick(card) {
   cardPreviewClass.open({ name: card._name, link: card._link });
 }
 
-function handleCardAddSubmit(data) {
-  cardAddFormClass.viewLoading(true);
+function handleCardAddSubmit(inputData) {
+  cardAddFormClass.isLoading(true);
   api
-    .addCard(data)
+    .addCard(inputData)
     .then((data) => {
-      cardSection.addItem(createCard({ name: data.name, link: data.link }));
+      const { _id, name, link, isLiked } = data;
+      const newCardData = { _id, name, link, isLiked };
+      cardSection.addItem(createCard(newCardData));
       addFormValidator.disableBtn();
-      cardAddFormClass.reset();
+      cardAddForm.reset();
       cardAddFormClass.close();
     })
     .catch((err) => {
-      console.error(err);
+      console.error(`Error: failed to add card. ${err}`);
     })
     .finally(() => {
-      cardAddFormClass.viewLoading(false);
+      cardAddFormClass.isLoading(false);
     });
 }
 
-function handleProfileFormSubmit(inputData) {
-  profileFormClass.viewLoading(true);
+function handleProfileFormSubmit(data) {
+  profileFormClass.isLoading(true);
   api
-    .setUserInfo(inputData.name, inputData.about)
-    .then((data) => {
+    .setUserInfo(data.name, data.about)
+    .then(() => {
       profileInfoClass.setUserInfo(data.name, data.about);
       editFormValidator.disableBtn();
       profileFormClass.close();
@@ -157,14 +160,26 @@ function handleProfileFormSubmit(inputData) {
       console.error(err);
     })
     .finally(() => {
-      profileInfoClass.viewLoading(false);
+      profileFormClass.isLoading(false);
     });
 }
 
-function handlePictureSubmit(image) {
-  api.changeAvatar(image).then((avatar) => {
-    profileInfoClass.setAvatar(avatar.src);
-  });
+function handlePictureSubmit({ picture }) {
+  console.log({ picture });
+  pictureFormClass.isLoading(true);
+  api
+    .changeAvatar({ picture })
+    .then(() => {
+      profileInfoClass.setAvatar({ picture });
+      pictureFormValidator.disableBtn();
+      pictureFormClass.close();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      pictureFormClass.isLoading(false);
+    });
 }
 
 function handleLikeBtn(card) {
@@ -179,7 +194,6 @@ function handleLikeBtn(card) {
 }
 
 function handleDeleteBtn(card) {
-  console.log(card);
   confirmFormClass.open();
   confirmFormClass.handleConfirm(() => {
     confirmFormClass.viewLoading(true);
@@ -191,7 +205,7 @@ function handleDeleteBtn(card) {
         confirmFormClass.close();
       })
       .catch((err) => {
-        console.error("Failed to delete card:", err);
+        console.error(`Failed to delete card. ${err}`);
         confirmFormClass.viewLoading(false);
       });
   });
@@ -204,9 +218,9 @@ pictureEditBtn.addEventListener("click", () => {
 });
 
 profileEditBtn.addEventListener("click", () => {
-  const { name, description } = profileInfoClass.getUserInfo();
+  const { name, about } = profileInfoClass.getUserInfo();
   profileNameInput.value = name;
-  profileDescriptionInput.value = description;
+  profileDescriptionInput.value = about;
   profileFormClass.open();
 });
 

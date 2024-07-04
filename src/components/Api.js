@@ -19,7 +19,7 @@ export default class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, { headers: this._headers })
       .then(this._handleServerResponse)
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(`Api error getting cards, ${err}`));
   }
 
   addCard({ name, link }) {
@@ -62,25 +62,25 @@ export default class Api {
       .catch((err) => console.error(err));
   }
 
-  setUserInfo(name, description) {
+  setUserInfo(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name,
-        description,
+        about,
       }),
     })
       .then(this._handleServerResponse)
       .catch((err) => console.error(err));
   }
 
-  changeAvatar(avatarURL) {
+  changeAvatar({ picture }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatarURL,
+        avatar: picture,
       }),
     })
       .then(this._checkResponse)

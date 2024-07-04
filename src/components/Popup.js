@@ -16,14 +16,6 @@ export default class Popup {
     document.removeEventListener("keydown", this._handleEscapeClose);
   }
 
-  viewLoading(isLoading) {
-    if (isLoading) {
-      this._submitBtn.textContent = "Saving...";
-    } else {
-      this._submitBtn.textContent = "Save";
-    }
-  }
-
   _handleEscapeClose = (e) => {
     if (e.key === "Escape") {
       this.close();

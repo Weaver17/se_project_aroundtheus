@@ -34,7 +34,7 @@ export const selectors = {
 
 export const profileInfo = {
   name: document.querySelector(".profile__name"),
-  description: document.querySelector(".profile__description"),
+  about: document.querySelector(".profile__description"),
   avatar: document.querySelector(".profile__avatar-image"),
   _id: "203ef5b29b8491c8911cf220",
 };
@@ -71,4 +71,4 @@ export const pictureEl = document.querySelector(".profile__avatar-image");
 export const cardLikeBtn = document.querySelector(".card__like-button");
 export const cardDeleteBtn = document.querySelector(".card__delete-button");
 
-export const confirmModalForm = document.querySelector("#confirm-modal-form");
+export const confirmModalBtn = document.querySelector(".modal__confirm");

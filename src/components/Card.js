@@ -78,9 +78,6 @@ export default class Card {
     this._setEventListeners();
     this._renderisLiked();
 
-    console.log(this._cardLikeButton);
-    console.log(this._cardDeleteBtn);
-
     return this._cardElement;
   }
 }

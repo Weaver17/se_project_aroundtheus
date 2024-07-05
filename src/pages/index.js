@@ -167,13 +167,12 @@ function handleProfileFormSubmit(data) {
     });
 }
 
-function handlePictureSubmit(pictureUrl) {
-  console.log(pictureUrl.picture);
+function handlePictureSubmit(avatarUrl) {
   pictureFormClass.isLoading(true);
   api
-    .changeAvatar(pictureUrl.picture)
-    .then((data) => {
-      profileInfoClass.setUserInfo({ avatar: data.picture });
+    .changeAvatar(avatarUrl)
+    .then(() => {
+      profileInfoClass.setUserInfo({ avatar: avatarUrl.picture });
       pictureFormValidator.disableBtn();
       pictureFormClass.close();
     })

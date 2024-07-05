@@ -82,7 +82,7 @@ export default class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatarUrl,
+        avatar: avatarUrl.picture,
       }),
     })
       .then(this._checkResponse)

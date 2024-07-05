@@ -216,11 +216,13 @@ function handleDeleteBtn(card) {
 
 // LISTENERS //
 pictureEditBtn.addEventListener("click", () => {
+  pictureFormValidator.resetValidation();
   pictureLinkInput.value = pictureEl.src;
   pictureFormClass.open();
 });
 
 profileEditBtn.addEventListener("click", () => {
+  editFormValidator.resetValidation();
   const { name, about } = profileInfoClass.getUserInfo();
   profileNameInput.value = name;
   profileDescriptionInput.value = about;
@@ -228,5 +230,6 @@ profileEditBtn.addEventListener("click", () => {
 });
 
 cardAddBtn.addEventListener("click", () => {
+  addFormValidator.resetValidation();
   cardAddFormClass.open();
 });

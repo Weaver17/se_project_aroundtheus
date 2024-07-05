@@ -61,10 +61,13 @@ api
 api
   .getUserInfo()
   .then((data) => {
-    profileInfoClass.setUserInfo(data.name, data.about);
-    profileInfoClass.setAvatar(data.avatar);
+    profileInfoClass.setUserInfo({
+      name: data.name,
+      about: data.about,
+      avatar: data.avatar,
+    });
   })
-  .catch((err) => console.error(err));
+  .catch((err) => console.error(`Error loading profile info. ${err}`));
 
 const createCard = (cardData) => {
   const card = new Card(
@@ -150,9 +153,9 @@ function handleCardAddSubmit(inputData) {
 function handleProfileFormSubmit(data) {
   profileFormClass.isLoading(true);
   api
-    .setUserInfo(data.name, data.about)
+    .setUserInfo({ name: data.name, about: data.about })
     .then(() => {
-      profileInfoClass.setUserInfo(data.name, data.about);
+      profileInfoClass.setUserInfo({ name: data.name, about: data.about });
       editFormValidator.disableBtn();
       profileFormClass.close();
     })
@@ -164,13 +167,13 @@ function handleProfileFormSubmit(data) {
     });
 }
 
-function handlePictureSubmit({ picture }) {
-  console.log({ picture });
+function handlePictureSubmit(pictureUrl) {
+  console.log(pictureUrl.picture);
   pictureFormClass.isLoading(true);
   api
-    .changeAvatar({ picture })
-    .then(() => {
-      profileInfoClass.setAvatar({ picture });
+    .changeAvatar(pictureUrl.picture)
+    .then((data) => {
+      profileInfoClass.setUserInfo({ avatar: data.picture });
       pictureFormValidator.disableBtn();
       pictureFormClass.close();
     })

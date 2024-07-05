@@ -62,30 +62,30 @@ export default class Api {
       .catch((err) => console.error(err));
   }
 
-  setUserInfo(name, about) {
+  setUserInfo(name, about, avatar, _id) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name,
         about,
+        avatar,
+        _id,
       }),
     })
       .then(this._handleServerResponse)
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(`Error setting api user info. ${err}`));
   }
 
-  changeAvatar({ picture }) {
+  changeAvatar(avatarUrl) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: picture,
+        avatar: avatarUrl,
       }),
     })
       .then(this._checkResponse)
       .catch((err) => console.error(err));
   }
 }
-
-// submit -- onload = button.textContent = "Saving..."

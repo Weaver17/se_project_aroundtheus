@@ -62,7 +62,7 @@ export default class Api {
       .catch((err) => console.error(err));
   }
 
-  setUserInfo(name, about, avatar, _id) {
+  setUserInfo({ name, about, avatar, _id }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,

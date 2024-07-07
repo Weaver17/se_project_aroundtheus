@@ -151,16 +151,17 @@ function handleCardAddSubmit(inputData) {
 }
 
 function handleProfileFormSubmit(data) {
+  console.log(data);
   profileFormClass.isLoading(true);
   api
-    .setUserInfo({ name: data.name, about: data.about })
+    .setUserInfo(data)
     .then(() => {
       profileInfoClass.setUserInfo({ name: data.name, about: data.about });
       editFormValidator.disableBtn();
       profileFormClass.close();
     })
     .catch((err) => {
-      console.error(err);
+      console.error(`Error handling profile form submit. ${err}`);
     })
     .finally(() => {
       profileFormClass.isLoading(false);

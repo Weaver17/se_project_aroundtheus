@@ -45,19 +45,22 @@ export const validationSettings = {
   inactiveButtonClass: "modal__save_disabled",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
+  formSelector: ".modal__form",
 };
+
+export const formValidators = {};
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const cardAddModal = document.querySelector("#add-card-modal");
 const profilePictureModal = document.querySelector("#profile-picture-modal");
 
-export const editFormEl = profileEditModal.querySelector(".modal__form");
-export const addFormEl = cardAddModal.querySelector(".modal__form");
-export const pictureFormEl = profilePictureModal.querySelector(".modal__form");
+export const profileEditForm = profileEditModal.querySelector(".modal__form");
+export const cardAddForm = cardAddModal.querySelector(".modal__form");
+export const profilePictureForm =
+  profilePictureModal.querySelector(".modal__form");
 
 export const profileEditBtn = document.querySelector("#profile-edit-button");
 export const cardAddBtn = document.querySelector("#add-card-button");
-export const cardAddForm = cardAddModal.querySelector("#card-form");
 export const profileNameInput = document.querySelector("#modal-name");
 export const profileDescriptionInput =
   document.querySelector("#modal-description");

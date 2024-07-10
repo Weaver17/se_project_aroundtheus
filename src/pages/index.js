@@ -150,7 +150,7 @@ function handleProfileFormSubmit(data) {
   api
     .setUserInfo(data)
     .then(() => {
-      profileInfoClass.setUserInfo({ name: data.name, about: data.about });
+      profileInfoClass.setUserInfo(data);
       formValidators[profileEditForm.getAttribute("name")].disableBtn();
       profileFormClass.close();
     })
@@ -199,7 +199,7 @@ function handleDeleteBtn(card) {
       .catch((err) => {
         console.error(`Failed to delete card. ${err}`);
       })
-      .finally(confirmFormClass.viewLoading(false));
+      .finally(() => confirmFormClass.viewLoading(false));
   });
 }
 
@@ -213,8 +213,7 @@ pictureEditBtn.addEventListener("click", () => {
 profileEditBtn.addEventListener("click", () => {
   formValidators[profileEditForm.getAttribute("name")].resetValidation();
   const { name, about } = profileInfoClass.getUserInfo();
-  profileNameInput.value = name;
-  profileDescriptionInput.value = about;
+  profileFormClass.setInputValues({ name, about });
   profileFormClass.open();
 });
 

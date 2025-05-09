@@ -8,6 +8,23 @@
 }
 
 .profile__avatar {
+  margin: 0;
+  padding: 0;
+}
+
+.profile__avatar-button {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  background: transparent center no-repeat;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.profile__avatar-image {
   object-fit: cover;
   background-position: center;
   margin-right: 24px;
@@ -46,12 +63,6 @@
   grid-area: button;
 }
 
-.profile__edit-button:hover {
-  cursor: pointer;
-  opacity: 0.6;
-  transition: 0.3s linear;
-}
-
 .profile__description {
   margin: 7px 0 0;
   padding: 0;
@@ -71,6 +82,17 @@
   width: 150px;
   border-radius: 2px;
   margin-left: auto;
+}
+
+.profile__avatar-button:hover {
+  background: rgba(0, 0, 0, 0.8) url(../images/Bigpencil.png) center no-repeat;
+  transition: 0.1s linear;
+}
+
+.profile__edit-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s linear;
 }
 
 .profile__add-button:hover {
@@ -104,7 +126,7 @@
 }
 
 @media screen and (max-width: 605px) {
-  .profile__avatar {
+  .profile__avatar-image {
     margin-right: 10px;
   }
 
@@ -126,7 +148,7 @@
     justify-content: center;
   }
 
-  .profile__avatar {
+  .profile__avatar-image {
     margin-bottom: 30px;
   }
 

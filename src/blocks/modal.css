@@ -24,6 +24,7 @@
 .modal__container {
   position: relative;
   padding: 36px;
+  padding-top: 34px;
   background-color: #fff;
   border-radius: 10px;
 }
@@ -61,7 +62,6 @@
   margin: 0 0 30px;
   padding: 0;
   width: 358px;
-  /* overflow: hidden; */
 }
 
 .modal__input {
@@ -99,6 +99,22 @@
   line-height: 22px;
   text-align: center;
   cursor: pointer;
+}
+
+.modal__confirm {
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 2px;
+  background-color: #000;
+  color: #fff;
+  height: 50px;
+  width: 358px;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: -16px;
 }
 
 .modal__exit:hover {
@@ -170,9 +186,25 @@
     width: 238px;
   }
 
+  .modal__input-error {
+    width: 238px;
+  }
+
+  .modal__input {
+    width: 238px;
+  }
+
   .modal__save {
     font-size: 14px;
     line-height: 17px;
     height: 46px;
+  }
+
+  .modal__confirm {
+    font-size: 14px;
+    line-height: 17px;
+    height: 46px;
+    width: 238px;
+    margin-top: 24px;
   }
 }

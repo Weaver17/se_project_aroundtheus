@@ -4,8 +4,10 @@ https://weaver17.github.io/se_project_aroundtheus/
 
 ## Recent Updates
 
-- Added JavaScript!
-- Added edit profile modal
+- Api fully implemented
+- Edit profile and avatar
+- Add cards
+- Like and delete cards
 
 ### Overview
 
@@ -47,6 +49,4 @@ https://drive.google.com/file/d/1UfLnQYimSy1rCs3w6YOgewub0Lm_ZDmr/view?usp=shari
 
 **Future Updates**
 
-- Edit profile
-- Add images
-- Like image
+-
